@@ -1,0 +1,30 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": { "major": 3, "minor": 21, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "pico",
+      "displayName": "Pico Debug",
+      "description": "Build preset for Raspberry Pi Pico with cross-compiler",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/cmake-build-pico-cross",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/pico_toolchain.cmake",
+        "PICO_SDK_PATH": "/Users/danielhammerl/pico-sdk",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "PICOTOOL_NO_HOST_BUILD": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "pico",
+      "configurePreset": "pico",
+      "description": "Build all targets for Pico",
+      "targets": [
+        "all"
+      ],
+      "jobs": 8
+    }
+  ]
+}
